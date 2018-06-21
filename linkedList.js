@@ -9,7 +9,7 @@ class LinkedList {
     constructor() {
             this.head = null;
     }
-
+    
     insertFirst(item){
         this.head = new _Node(item, this.head);
     }
@@ -233,10 +233,24 @@ const main = function() {
         return previous;
     }
 
+
+    const findLast = function(list) {
+        let currNode = list.head;
+
+        while(currNode) {
+            if(currNode.next === null) {
+                return currNode;
+            } else {
+                currNode = currNode.next;
+            }
+        }
+    }
+
     display(SLL);
     console.log(listSize(SLL));
     console.log(isEmpty(SLL2));
     console.log(findPrevious(SLL, 'Boomer'));
+    console.log(findLast(SLL));
 }
 
 main();
