@@ -12,7 +12,6 @@ class LinkedList {
 
     insertFirst(item){
         this.head = new _Node(item, this.head);
-        console.log('HEAD',this.head)
     }
 
     insertLast(item){
@@ -48,7 +47,6 @@ class LinkedList {
             }
         }
         //found it
-        // console.log('FIND',currNode)
         return currNode;
     }
 
@@ -160,6 +158,7 @@ class LinkedList {
     }
 }
 
+
 const main = function() {
 
     let SLL = new LinkedList();
@@ -177,8 +176,31 @@ const main = function() {
     SLL.inserBefore('Boomer', 'Athena');
     SLL.insertAfter('Helo', 'Hotdog');
     SLL.insertAt(2, 'Kat');
+    SLL.remove('Tauhida');
 
-    console.log(JSON.stringify(SLL, null, 2));
+
+    const display = function(list) {
+        console.log(JSON.stringify(list, null, 2));
+    };
+
+    const listSize = function(list) {
+        if(list.head === null) {
+            return null;
+        } else {
+            let count = 0;
+            let currNode = list.head;
+    
+            while(currNode) {
+                currNode = currNode.next;
+                count++;
+            }
+    
+            return count;
+        }
+    }
+
+    display(SLL);
+    console.log(listSize(SLL));
 }
 
 main();
