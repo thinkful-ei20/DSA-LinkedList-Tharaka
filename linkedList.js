@@ -48,9 +48,35 @@ class LinkedList {
             }
         }
         //found it
-        console.log('FIND',currNode)
+        // console.log('FIND',currNode)
         return currNode;
     }
+
+    findPrev(item) { 
+        //start at the head
+        let previous = this.head;
+        let currNode = this.head;
+        //if the list is empty
+        if (!this.head){
+            return null;
+        }
+        //Check for the item 
+        while(currNode.value !== item) {
+            //return null if end of the list 
+            // and the item is not on the list
+            if (currNode.next === null) {
+                return null;
+            }
+            else {
+                //otherwise keep looking 
+                previous = currNode;
+                currNode = currNode.next;
+            }
+        }
+        //found it
+        return previous;
+    }
+    
 
     remove(item){ 
         //if the list is empty
@@ -80,16 +106,30 @@ class LinkedList {
     }
 
 
-    // insertBefore(key, item) {
-    //     if(key === null) {
-    //         console.log('Key not found');
-    //     }
-        
-    //     let targetNode = this.find(key);
-    //     let newNode = new _Node(item, targetNode.next);
-    //     targetNode.next = newNode;
+    inserBefore(key, item) {
 
-    // }
+        if (!this.head) {
+            this.insertFirst(item);
+        } else {
+            let targetNode = this.find(key);//doont use find here
+            let newNode = new _Node(item, targetNode);
+            let previous = this.findPrev(key);
+            previous.next = newNode;
+        }
+
+    }
+
+    insertAfter(key, item) {
+
+        if (!this.head) {
+            this.insertFirst(item);
+        } else {
+            let targetNode = this.find(key);
+            let newNode = new _Node(item, targetNode.next);
+            targetNode.next = newNode;
+        }
+
+    }
 }
 
 const main = function() {
@@ -105,9 +145,11 @@ const main = function() {
     SLL.insertFirst('Tauhida');
 
     SLL.remove('squirrel');
-    // SLL.find('Helo');
-    // SLL.insertBefore('Boomer', 'NewItem')
-    // console.log(SLL)
+
+    SLL.inserBefore('Husker', 'BeforeItem');
+    SLL.insertAfter('Boomer', 'AfterItem');
+
+    console.log(JSON.stringify(SLL, null, 2));
 }
 
 main();
