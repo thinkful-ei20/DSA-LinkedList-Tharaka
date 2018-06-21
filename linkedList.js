@@ -130,6 +130,34 @@ class LinkedList {
         }
 
     }
+
+    insertAt(pos, item) {
+        if (!this.head) {
+            this.insertFirst(item);
+        } else {
+            let previous = this.head;
+            let currNode = this.head;
+            let counter = 0;
+            while(currNode) {
+                //return null if end of the list 
+                // and the item is not on the list
+                if (currNode.next === null) {
+                    return null;
+                }
+                else {
+                    if(counter === pos) {
+                        let newNode = new _Node(item, currNode);
+                        previous.next = newNode;
+                    } else {
+                    //otherwise keep looking 
+                    previous = currNode;
+                    currNode = currNode.next;
+                    }
+                }
+                counter++;
+            }
+        }
+    }
 }
 
 const main = function() {
@@ -146,8 +174,9 @@ const main = function() {
 
     SLL.remove('squirrel');
 
-    SLL.inserBefore('Husker', 'BeforeItem');
-    SLL.insertAfter('Boomer', 'AfterItem');
+    SLL.inserBefore('Boomer', 'Athena');
+    SLL.insertAfter('Helo', 'Hotdog');
+    SLL.insertAt(2, 'Kat');
 
     console.log(JSON.stringify(SLL, null, 2));
 }
