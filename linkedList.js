@@ -162,6 +162,7 @@ class LinkedList {
 const main = function() {
 
     let SLL = new LinkedList();
+    let SLL2 = new LinkedList();
 
     SLL.insertFirst('Apollo');
     SLL.insertLast('Boomer');
@@ -199,8 +200,43 @@ const main = function() {
         }
     }
 
+    const isEmpty = function(list) {
+        if(list.head === null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    const findPrevious = function(list, item) { 
+        //start at the head
+        let previous = list.head;
+        let currNode = list.head;
+        //if the list is empty
+        if (!list.head){
+            return null;
+        }
+        //Check for the item 
+        while(currNode.value !== item) {
+            //return null if end of the list 
+            // and the item is not on the list
+            if (currNode.next === null) {
+                return null;
+            }
+            else {
+                //otherwise keep looking 
+                previous = currNode;
+                currNode = currNode.next;
+            }
+        }
+        //found it
+        return previous;
+    }
+
     display(SLL);
     console.log(listSize(SLL));
+    console.log(isEmpty(SLL2));
+    console.log(findPrevious(SLL, 'Boomer'));
 }
 
 main();
