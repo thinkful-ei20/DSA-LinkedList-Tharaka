@@ -76,4 +76,27 @@ class LinkedList {
         }
         previousNode.next = currNode.next;
     }
+
+
+    insertBefore() {
+        
+    }
 }
+
+const main = function() {
+
+    let SLL = new LinkedList();
+
+    SLL.insertLast('Apollo');
+    SLL.insertLast('Boomer');
+    SLL.insertLast('Helo');
+    SLL.insertLast('Husker');
+    SLL.insertLast('Starbuck');
+
+    SLL.insertFirst('Tauhida');
+
+    SLL.remove('squirrel');
+    // console.log(SLL)
+}
+
+main();
