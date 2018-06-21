@@ -1,7 +1,7 @@
 class _Node {
     constructor(value, next) {
-        this.value=value;
-        this.next=next;
+        this.value = value;
+        this.next = next;
     }
 }
 
@@ -12,6 +12,7 @@ class LinkedList {
 
     insertFirst(item){
         this.head = new _Node(item, this.head);
+        console.log('HEAD',this.head)
     }
 
     insertLast(item){
@@ -47,6 +48,7 @@ class LinkedList {
             }
         }
         //found it
+        console.log('FIND',currNode)
         return currNode;
     }
 
@@ -78,16 +80,23 @@ class LinkedList {
     }
 
 
-    insertBefore() {
+    // insertBefore(key, item) {
+    //     if(key === null) {
+    //         console.log('Key not found');
+    //     }
         
-    }
+    //     let targetNode = this.find(key);
+    //     let newNode = new _Node(item, targetNode.next);
+    //     targetNode.next = newNode;
+
+    // }
 }
 
 const main = function() {
 
     let SLL = new LinkedList();
 
-    SLL.insertLast('Apollo');
+    SLL.insertFirst('Apollo');
     SLL.insertLast('Boomer');
     SLL.insertLast('Helo');
     SLL.insertLast('Husker');
@@ -96,6 +105,8 @@ const main = function() {
     SLL.insertFirst('Tauhida');
 
     SLL.remove('squirrel');
+    // SLL.find('Helo');
+    // SLL.insertBefore('Boomer', 'NewItem')
     // console.log(SLL)
 }
 
